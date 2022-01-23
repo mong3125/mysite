@@ -1,0 +1,59 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    border-collapse: collapse;
+    margin: 0px;
+    padding: 0px;
+    color: black;
+}
+
+/* Header */
+header {
+    margin: auto;
+    width: 1280px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #135EF2;
+    align-items: center;
+    padding: 8px 0px;
+}
+header * {
+  color: #f0f0f0;
+}
+.logo {
+    margin-left: 24px;
+    font-size: 32px;
+}
+.menu {
+    display: flex;
+    align-items: flex-start;
+    width: 1050px;
+}
+.menu > li {
+    padding: 8px 16px;
+    font-size: 24px;
+    margin-right: 20px;
+}
+
+/*가운데서 좌우로 펼쳐지는 라인 에니메이션*/
+.spread-underline {
+    position: relative;
+  }
+.spread-underline:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #8DC3F2;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+  .spread-underline:hover:after {
+    width: 100%;
+    left: 0;
+  }
+  /*가운데서 좌우로 펼쳐지는 라인 에니메이션:끝*/

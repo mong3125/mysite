@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+    <script src="https://kit.fontawesome.com/9b2e3379cb.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    <title>Mysite2</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="logo">
+            <i id="mysiteLogo" class="fas fa-university"></i>
+            <div>Mysite2</div>
+        </div>
+        <div class="login">
+            <form action="{% url 'common:login' %}" method="post">
+                {% csrf_token %}
+                <div class="input-box">
+                    <input id="username" type="text" name="username" placeholder="아이디">
+                    <label for="username">아이디</label>
+                </div>
+                <div class="input-box">
+                    <input id="password" type="password" name="password" placeholder="비밀번호">
+                    <label for="password">비밀번호</label>
+                </div>
+                <div class="forgot-div">
+                    <a href="#" class="forgot">아이디찾기</a>
+                    <a href="#" class="forgot">비밀번호 찾기</a>
+                </div>
+                <button type="submit">로그인</button>
+                <a href="#" class="signUp">회원가입</a>
+                {% include "form_errors.html" %}
+            </form>
+        </div>
+    </div>
+</body>
+</html>

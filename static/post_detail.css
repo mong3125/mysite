@@ -1,0 +1,54 @@
+textarea {
+    resize: none;
+    border: none;
+}
+.wrap {
+    width: 1280px;
+    margin: auto;
+}
+.title {
+    margin-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.title h3 {
+    font-size: 40px;
+}
+.contents {
+    margin-top: 20px;
+    font-size: 20px;
+    min-height: 300px;
+}
+.post {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.comment {
+    margin-top: 10px;
+}
+.comment-input {
+    text-align: center;
+}
+.comment textarea {
+    width: 1280px;
+    height: 200px;
+    font-size: 20px;
+    padding: 5px;
+}
+.comment-btn {
+    margin-top: 10px;
+    text-align: end;
+}
+.comment-btn input {
+    position: relative;
+    right: 5px;
+    width: 100px;
+    border-radius: 20px;
+    border: none;
+    background: #3071F2;
+    color: #fff;
+    cursor: pointer;
+    height: 40px;
+    font-size: 20px;
+}

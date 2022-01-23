@@ -1,0 +1,126 @@
+{% load static %}
+{% load board_filter %}
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'board.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'header.css' %}">
+    <script src="https://kit.fontawesome.com/9b2e3379cb.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    <title>Mysite2</title>
+</head>
+
+<body>
+    <!-- 헤더 -->
+    {% include 'header.html' %}
+    <!-- 게시글 -->
+    <table class="board">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일시</th>
+                <th>조회수</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if post_list %}
+                {% for post in post_list %}
+                    {% if forloop.counter|divisibleby:2 %}
+                        <tr>
+                            <td class="even">{{ post_list.paginator.count|sub:post_list.start_index|sub:forloop.counter0|add:1 }}</td>
+                            <td class="title even"><a href="{% url 'board:detail' post.id %}">{{ post.subject }}</a></td>
+                            <td class="even">작성자</td>
+                            <td class="even create_date">{{ post.create_date }}</td>
+                            <td class="even">조회수</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td>{{ post_list.paginator.count|sub:post_list.start_index|sub:forloop.counter0|add:1 }}</td>
+                            <td class="title"><a href="{% url 'board:detail' post.id %}">{{ post.subject }}</a></td>
+                            <td>작성자</td>
+                            <td class="create_date">{{ post.create_date }}</td>
+                            <td>조회수</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+
+    <!-- 글쓰기 버튼 -->
+    <div class="write">
+        <a href="{% url 'board:create_post' %}">글쓰기</a>
+    </div>
+
+    <!-- 페이지 번호 -->
+    <ul class="pagination">
+        <!--이전 페이지 버튼-->
+        {% if post_list.has_previous %}
+            <li><a href="?page={{ post_list.previous_page_number }}" class="page_before">이전</a></li>
+        {% else %}
+            <li><a href="#" class="page_before">이전</a></li>
+        {% endif %}
+        <!--페이지 번호-->
+        {% if post_list.number <= 5 %}
+            {% for page_number in post_list.paginator.page_range %}
+                {% if page_number <= 9 %}
+                    {% if page_number == post_list.number %}
+                        <li aria-current="page">
+                            <a href="?page={{ page_number }}" class="active">{{ page_number }}</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="?page={{ page_number }}">{{ page_number }}</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            {% if post_list.number >= last_page|add:-4 %}
+                {% for page_number in post_list.paginator.page_range %}
+                    {% if page_number >= last_page|add:-8 %}
+                        {% if page_number == post_list.number %}
+                            <li aria-current="page">
+                                <a href="?page={{ page_number }}" class="active">{{ page_number }}</a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="?page={{ page_number }}">{{ page_number }}</a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                {% for page_number in post_list.paginator.page_range %}
+                    {% if page_number >= post_list.number|add:-4 and page_number <= post_list.number|add:4 %}
+                        {% if page_number == post_list.number %}
+                            <li aria-current="page">
+                                <a href="?page={{ page_number }}" class="active">{{ page_number }}</a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="?page={{ page_number }}">{{ page_number }}</a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+        <!--다음 페이지 버튼-->
+        {% if post_list.has_next %}
+            <li><a href="?page={{ post_list.next_page_number }}" class="page_next">다음</a></li>
+        {% else %}
+            <li><a href="#" class="page_next">다음</a></li>
+        {% endif %}
+    </ul>
+</body>
+
+</html>

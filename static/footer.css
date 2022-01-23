@@ -1,0 +1,20 @@
+body {
+    height: 100%;
+}
+
+footer {
+    width: 1280px;
+    margin: auto;
+    margin-top: 20px;
+    background: hsl(208, 80%, 75%);
+    height: 180px;
+}
+.footer {
+    margin: 20px;
+    width: 500px;
+    line-height: 40px;
+}
+.footer * {
+    color: #fff;
+    font-size: 15px;
+}

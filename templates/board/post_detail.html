@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'post_detail.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'header.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}">
+    <script src="https://kit.fontawesome.com/9b2e3379cb.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    <title>Mysite2</title>
+</head>
+
+<body>
+    {% include 'header.html' %}
+    <div class="wrap">
+        <div class="post">
+            <div class="title">
+                <h3>
+                    {{ post.subject }}
+                </h3>
+            </div>
+            <p class="contents">
+                {{ post.content | linebreaksbr }}
+            </p>
+        </div>
+        <div class="comment">
+            <div class="comment-input">
+                <textarea name="comment" id="comment" cols="30" rows="10" placeholder="댓글을 입력하세요"></textarea>
+            </div>
+            <div class="comment-btn">
+                <input type="submit" value="저장하기">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

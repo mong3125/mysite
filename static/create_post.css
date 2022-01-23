@@ -1,0 +1,48 @@
+.wrap {
+    width: 1200px;
+    margin: auto;
+    margin-top: 50px;
+}
+.post-title {
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(218, 218, 218);
+}
+.postForm input {
+    border: none;
+    display: block;
+}
+.postForm input[name='subject'] {
+    margin-top: 10px;
+    width: 1200px;
+    height: 60px;
+    font-size: 40px;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+.postForm textarea{
+    border: none;
+    margin-top: 20px;
+    width: 1200px;
+    height: 500px;
+    font-size: 20px;
+    padding: 5px;
+    resize: none;
+}
+
+.save {
+    margin-top: 10px;
+}
+.save button {
+    position: relative;
+    left: 1100px;
+    cursor: pointer;
+    display: block;
+    width: 100px;
+    border-radius: 20px;
+    border: none;
+    background: #3071F2;
+    color: #fff;
+    cursor: pointer;
+    height: 40px;
+    font-size: 20px;
+}

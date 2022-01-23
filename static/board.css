@@ -1,0 +1,66 @@
+.board {
+    margin: auto;
+    margin-top: 20px;
+    text-align: left;
+}
+.board thead th {
+    width: 140px;
+    padding: 20px;
+    color: #fff;
+    background: #3071F2;
+}
+.board tbody td {
+    padding: 20px;
+}
+.title  {
+    width: 460px;
+}
+.create_date {
+    width: 200px;
+}
+.even {
+    background: #d2eaff;
+}
+.write {
+    margin: auto;
+    margin-top: 20px;
+    width: 1280px;
+    text-align: right;
+}
+.write a {
+    background: #3071F2;
+    border-radius: 10px;
+    width: 100px;
+    padding: 5px 20px;
+    color: #fff;
+}
+.pagination {
+    width: 1280px;
+    margin: auto;
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+}
+.pagination li > a {
+    text-align: center;
+    display: inline-block;
+    width: 40px;
+    padding: 10px 5px;
+    background: rgb(240, 240, 240);
+    border-right: solid 1px #ccc;
+}
+.page_before:first-child {
+    color: #fff;
+    background: #3071F2;
+    border-radius: 10px 0px 0px 10px;
+}
+.page_next:first-child {
+    color: #fff;
+    background: #3071F2;
+    border-radius: 0px 10px 10px 0px;
+}
+.active {
+    background: #888E99;
+}
