@@ -3,10 +3,12 @@ body {
 }
 
 footer {
+    background: #135EF2;
+}
+.footer_wrap {
     width: 1280px;
     margin: auto;
     margin-top: 20px;
-    background: hsl(208, 80%, 75%);
     height: 180px;
 }
 .footer {
@@ -17,4 +19,11 @@ footer {
 .footer * {
     color: #fff;
     font-size: 15px;
+}
+.for_footer {
+    height: auto;
+    min-height: 80vh;
+}
+footer {
+    position: relative;
 }

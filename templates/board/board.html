@@ -7,8 +7,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'board.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'board.css' %}?after">
     <link rel="stylesheet" type="text/css" href="{% static 'header.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?">
     <script src="https://kit.fontawesome.com/9b2e3379cb.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +18,7 @@
 </head>
 
 <body>
+<div class="for_footer">
     <!-- 헤더 -->
     {% include 'header.html' %}
     <!-- 게시글 -->
@@ -121,6 +123,8 @@
             <li><a href="#" class="page_next">다음</a></li>
         {% endif %}
     </ul>
+</div>
+    {% include 'footer.html' %}
 </body>
 
 </html>

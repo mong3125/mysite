@@ -17,6 +17,7 @@
 </head>
 
 <body>
+<div class="for_footer">
     {% include 'header.html' %}
     <div class="wrap">
         <div class="post">
@@ -24,20 +25,41 @@
                 <h3>
                     {{ post.subject }}
                 </h3>
+                <div class="post_control">
+                    <a href="#">수정</a>
+                    <a href="#">삭제</a>
+                </div>
             </div>
             <p class="contents">
                 {{ post.content | linebreaksbr }}
             </p>
         </div>
-        <div class="comment">
+        <form action="{% url 'board:comment_create' post.id %}" method="post" class="comment_create">
+        {% csrf_token %}
             <div class="comment-input">
                 <textarea name="comment" id="comment" cols="30" rows="10" placeholder="댓글을 입력하세요"></textarea>
             </div>
             <div class="comment-btn">
                 <input type="submit" value="저장하기">
             </div>
-        </div>
+        </form>
     </div>
+    <div class="comment_list">
+        {% for comment in post.comment_set.all %}
+        <div class="comment">
+            <div class="comment_wrap">
+                <div class="comment_create_date">{{ comment.create_date }}</div>
+                <p class="comment_content">{{ comment.content | linebreaksbr}}</p>
+            </div>
+            <div class="comment_control">
+                <a href="#" class="comment_modify">수정</a>
+                <a href="#" class="comment_delete">삭제</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+    {% include 'footer.html' %}
 </body>
 
 </html>

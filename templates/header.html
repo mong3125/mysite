@@ -1,15 +1,17 @@
 <header>
-    <div class="logo">
-        <i class="fas fa-university"></i>
-        <a href="{% url 'board:index' %}">Mysite2</a>
-    </div>
-    <ul class="menu">
-        <li><a href="#" class="spread-underline">캘린더</a></li>
-        <li><a href="#" class="spread-underline">이벤트</a></li>
-        <li><a href="{% url 'board:index' %}" class="spread-underline">일기장</a></li>
-    </ul>
-    <div class="account">
-        <p class="account_name">daedae3125</p>
-        <a href="#" class="logout">로그아웃</a>
+    <div class="header_wrap">
+        <div class="logo">
+            <i class="fas fa-university"></i>
+            <a href="{% url 'board:index' %}">Mysite2</a>
+        </div>
+        <ul class="menu">
+            <li><a href="#" class="spread-underline">캘린더</a></li>
+            <li><a href="#" class="spread-underline">이벤트</a></li>
+            <li><a href="{% url 'board:index' %}" class="spread-underline">일기장</a></li>
+        </ul>
+        <div class="account">
+           <p class="account_name">daedae3125</p>
+           <a href="{% url 'common:logout' %}" class="logout">로그아웃</a>
+        </div>
     </div>
 </header>

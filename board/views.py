@@ -13,6 +13,7 @@ def index(request):
     page = request.GET.get('page', '1')
 
     #페이징 처리
+
     paginator = Paginator(post_list, 15)
     page_obj = paginator.get_page(page)
     last_page = len(paginator.page_range)
@@ -36,3 +37,9 @@ def post_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     context = {'post' : post}
     return render(request, 'board/post_detail.html', context)
+
+def comment_create(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    comment = Comment(post=post, content=request.POST.get('comment'), create_date=timezone.now())
+    comment.save()
+    return redirect('board:detail', post_id=post.id)

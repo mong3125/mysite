@@ -10,11 +10,13 @@
 
 /* Header */
 header {
+  background-color: #135EF2;
+}
+.header_wrap {
     margin: auto;
     width: 1280px;
     display: flex;
     justify-content: space-between;
-    background-color: #135EF2;
     align-items: center;
     padding: 8px 0px;
 }
@@ -22,6 +24,7 @@ header * {
   color: #f0f0f0;
 }
 .logo {
+  width: 300px;
     margin-left: 24px;
     font-size: 32px;
 }
@@ -38,22 +41,36 @@ header * {
 
 /*가운데서 좌우로 펼쳐지는 라인 에니메이션*/
 .spread-underline {
-    position: relative;
-  }
+  position: relative;
+}
 .spread-underline:after {
-    background: none repeat scroll 0 0 transparent;
-    bottom: 0;
-    content: "";
-    display: block;
-    height: 2px;
-    left: 50%;
-    position: absolute;
-    background: #8DC3F2;
-    transition: width 0.3s ease 0s, left 0.3s ease 0s;
-    width: 0;
-  }
-  .spread-underline:hover:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #8DC3F2;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.spread-underline:hover:after {
     width: 100%;
     left: 0;
-  }
-  /*가운데서 좌우로 펼쳐지는 라인 에니메이션:끝*/
+}
+/*가운데서 좌우로 펼쳐지는 라인 에니메이션:끝*/
+
+
+.account {
+  padding-right: 10px;
+  text-align: right;
+  width: 300px;
+}
+.account > p {
+  padding-right: 5px;
+  border-right: 1px solid #ccc;
+}
+.account * {
+  display: inline-block;
+}

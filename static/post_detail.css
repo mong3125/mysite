@@ -11,8 +11,15 @@ textarea {
     padding-bottom: 10px;
     border-bottom: 1px solid #ccc;
 }
+.title * {
+    display: inline-block;
+}
 .title h3 {
+    width: 1200px;
     font-size: 40px;
+}
+.title a{
+    margin-left: 5px;
 }
 .contents {
     margin-top: 20px;
@@ -24,13 +31,13 @@ textarea {
     border-bottom: 1px solid #ccc;
 }
 
-.comment {
+.comment_create {
     margin-top: 10px;
 }
 .comment-input {
     text-align: center;
 }
-.comment textarea {
+.comment_create textarea {
     width: 1280px;
     height: 200px;
     font-size: 20px;
@@ -51,4 +58,27 @@ textarea {
     cursor: pointer;
     height: 40px;
     font-size: 20px;
+}
+
+.comment_list {
+    margin: auto;
+    margin-top: 10px;
+    width: 1280px;
+    /* background: red; */
+}
+
+.comment {
+    padding: 10px;
+    border-radius: 10px;
+    background: #a3d4ff;
+    margin-top: 10px;
+}
+.comment_wrap {
+    width: 1190px;
+    display: inline-block;
+}
+.comment_control {
+    vertical-align: top;
+    text-align: center;
+    display: inline-block;
 }
