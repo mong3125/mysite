@@ -1,0 +1,66 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    border-collapse: collapse;
+    margin: 0px;
+    padding: 0px;
+    color: #000000;
+}
+:root {
+    --background-color: linear-gradient(to bottom, #3071F2, #8DC3F2);
+}
+
+body {
+    height: 100vh;
+    background: var(--background-color) no-repeat;
+}
+.wrap {
+    text-align: center;
+    padding-top: 15vh;
+}
+.logo {
+    margin: auto;
+    width: 260px;
+    display: flex;
+    align-items: center;
+    font-size: 60px;
+}
+.logo * {
+    color: #fff;
+}
+
+.signup_content{
+    height: 300px;
+    width: 300px;
+    padding: 100px;
+    margin: auto;
+    margin-top: 50px;
+    background: #fff;
+}
+/* .signup_content form {
+    background: chocolate;
+} */
+.signup_content label{
+    display: block;
+}
+.signup_content input{
+    padding: 2px;
+    width: 200px;
+    height: 20px;
+    font-size: 20px;
+}
+.signup_content div {
+    margin-top: 10px;
+    /* text-align: center */
+}
+.signup_content button {
+    background: #3071F2;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 0px 10px;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 10px;
+}

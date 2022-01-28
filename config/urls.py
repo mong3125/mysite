@@ -15,11 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from board import views
+from django.contrib.auth.views import LoginView as DefaultLoginView
+
+class LoginView(DefaultLoginView):
+    redirect_authenticated_user = True
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cal/', include('cal.urls')),
     path('board/', include('board.urls')),
     path('common/', include('common.urls')),
-    path('', views.index, name='index'),
+    path('', LoginView.as_view(template_name='common/login.html'), name='login'),
 ]

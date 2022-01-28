@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'signup.css' %}">
+    <script src="https://kit.fontawesome.com/9b2e3379cb.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    <title>Mysite2</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="logo" onclick="move_login">
+            <a href="{% url 'common:login' %}"><i id="mysiteLogo" class="fas fa-university"></i></a>
+            <a href="{% url 'common:login' %}"><div>Mysite2</div></a>
+        </div>
+    </div>
+    <div class="signup_content">
+        <form action="{% url 'common:signup' %}" method="post">
+            {% csrf_token %}
+            <div class="username">
+                <label for="username">아이디</label>
+                <input type="text" name="username">
+            </div>
+            <div class="password1">
+                <label for="password1">비밀번호</label>
+                <input type="password" name="password1">
+            </div>
+            <div class="password2">
+                <label for="password2">비밀번호 확인</label>
+                <input type="password" name="password2">
+            </div>
+            <div class="userEmail">
+                <label for="email">이메일</label>
+                <input type="text" name="email">
+            </div>
+            <button type="submit">생성하기</button>
+        </form>
+        {% include "form_errors.html" %}
+    </div>
+</body>
+<script>
+    function move_login(){
+        location.href = http://localhost:8000/common/login/;
+    }
+</script>
+
+</html>

@@ -10,7 +10,7 @@
             <li><a href="{% url 'board:index' %}" class="spread-underline">일기장</a></li>
         </ul>
         <div class="account">
-           <p class="account_name">daedae3125</p>
+           <p class="account_name">{{ user.username }}</p>
            <a href="{% url 'common:logout' %}" class="logout">로그아웃</a>
         </div>
     </div>
