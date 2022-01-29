@@ -12,7 +12,8 @@
 }
 
 body {
-    height: 100vh;
+    overflow: hidden;
+    height: 110vh;
     background: var(--background-color) no-repeat;
 }
 .wrap {
