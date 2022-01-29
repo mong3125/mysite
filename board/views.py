@@ -43,5 +43,6 @@ def post_detail(request, post_id):
 def comment_create(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     comment = Comment(post=post, content=request.POST.get('comment'), create_date=timezone.now())
+    comment.author = request.user
     comment.save()
     return redirect('board:detail', post_id=post.id)
