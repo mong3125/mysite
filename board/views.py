@@ -36,7 +36,7 @@ def create_post(request):
 def post_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     if request.user != post.author:
-        return HttpResponse("잘못된 접근입니다.")
+        return HttpResponse("이건 생각했었다 애송아.")
     context = {'post' : post}
     return render(request, 'board/post_detail.html', context)
 
