@@ -21,9 +21,5 @@ footer {
     font-size: 15px;
 }
 .for_footer {
-    height: auto;
-    min-height: 80vh;
-}
-footer {
-    position: relative;
+    min-height: 1100px;
 }
