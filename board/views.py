@@ -4,6 +4,7 @@ from .forms import PostForm
 from django.utils import timezone
 from django.core.paginator import Paginator
 from django.http import Http404, HttpResponse
+from django.contrib import messages
 # Create your views here.
 
 def index(request):
@@ -46,3 +47,44 @@ def comment_create(request, post_id):
     comment.author = request.user
     comment.save()
     return redirect('board:detail', post_id=post.id)
+
+def post_modify(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+
+    if request.user != post.author:
+        messages.error(request, '수정권한이 없습니다')
+        return redirect('board:detail', post_id=post_id)
+
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.modify_date = timezone.now()
+            post.save()
+            return redirect('board:detail', post_id=post_id)
+    else:
+        form = PostForm(instance=post)
+    context = {'form': form}
+    return render(request, 'board/create_post.html', context)
+
+def post_delete(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+
+    if request.user != post.author:
+        messages.error(request, '삭제권한이 없습니다')
+        return redirect('board:detail', post_id=post_id)
+
+    post.delete()
+    return redirect('board:index')
+
+def comment_modify(request, comment_id):
+    comment = get_object_or_404(Comment, pk=comment_id)
+
+    if request.user != comment.author:
+        messages.error(request, '수정권한이 없습니다.')
+        return redirect('board:detail', post_id=comment.post.id)
+
+    if request.method = "POST":
+        form = C
+

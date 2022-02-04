@@ -26,8 +26,8 @@
                     {{ post.subject }}
                 </h3>
                 <div class="post_control">
-                    <a href="#">수정</a>
-                    <a href="#">삭제</a>
+                    <a href="{% url 'board:post_modify' post.id%}">수정</a>
+                    <a href="{% url 'board:post_delete' post.id%}">삭제</a>
                 </div>
             </div>
             <p class="contents">
@@ -52,8 +52,8 @@
                 <p class="comment_content">{{ comment.content | linebreaksbr}}</p>
             </div>
             <div class="comment_control">
-                <a href="#" class="comment_modify">수정</a>
-                <a href="#" class="comment_delete">삭제</a>
+                <a href="{% url 'board:comment_modify' comment.id %}" class="comment_modify">수정</a>
+                <a href="{% url 'board:comment_delete' comment.id %}" class="comment_delete">삭제</a>
             </div>
         </div>
         {% endfor %}
