@@ -81,3 +81,9 @@ def post_delete(request, post_id):
     post.delete()
     return redirect('board:index')
 
+def comment_delete(request, comment_id):
+    comment = Comment.objects.get(id=comment_id)
+
+    comment.delete()
+    return redirect('board:detail', post_id=comment.post.id)
+

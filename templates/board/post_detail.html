@@ -40,7 +40,6 @@
                 <p class="comment_content">{{ comment.content | linebreaksbr}}</p>
             </div>
             <div class="comment_control">
-                <a href="{% url 'board:comment_modify' comment.id %}" class="comment_modify">수정</a>
                 <a href="{% url 'board:comment_delete' comment.id %}" class="comment_delete">삭제</a>
             </div>
         </div>
