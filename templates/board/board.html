@@ -1,28 +1,13 @@
-{% load static %}
-{% load board_filter %}
-<!DOCTYPE html>
-<html lang="ko">
-
+{% extends "base.html" %}
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'board/board.css' %}?after">
-    <link rel="stylesheet" type="text/css" href="{% static 'common/header.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'common/footer.css' %}">
-    <script src="https://kit.fontawesome.com/9b2e3379cb.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
-    <title>Mysite2</title>
+    {% load static %}
+    {% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/board/board.css' %}">
+    {% endblock %}
 </head>
-
-<body>
-<div class="for_footer">
-    <!-- 헤더 -->
-    {% include 'header.html' %}
-
-    <!-- 게시글 -->
+{% block content %}
+{% load board_filter %}
+<!-- 게시글 -->
     <table class="board">
         <thead>
             <tr>
@@ -125,8 +110,4 @@
             <li><a href="#" class="page_next">다음</a></li>
         {% endif %}
     </ul>
-</div>
-    {% include 'footer.html' %}
-</body>
-
-</html>
+{% endblock %}

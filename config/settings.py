@@ -124,6 +124,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+#로그인 로그아웃 이동 페이지
 LOGIN_REDIRECT_URL = '/board/'
 LOGOUT_REDIRECT_URL = '/'
 
+SESSION_COOKIE_AGE = 10

@@ -1,23 +1,13 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="ko">
+{% extends "base.html" %}
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'common/header.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'common/footer.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'board/create_post.css' %}">
-    <script src="https://kit.fontawesome.com/9b2e3379cb.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
-    <title>Mysite2</title>
+    {% load static %}
+    {% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/board/create_post.css' %}">
+    {% endblock %}
 </head>
-<body>
-<div class="for_footer">
-    {% include 'header.html' %}
+
+{% block content %}
     <div class="wrap">
         <form method="post" class="postForm">
             {% csrf_token %}
@@ -27,9 +17,8 @@
             <textarea name="content" cols="30" rows="10" placeholder="내용을 입력하세요"></textarea>
             <div class="save">
                 <button type="submit">저장하기</button>
+                <input onclick="window.history.back()">취소하기</input>
             </div>
         </form>
     </div>
-</div>
-    {% include 'footer.html' %}
-</body>
+{% endblock %}

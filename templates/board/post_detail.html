@@ -1,24 +1,12 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="ko">
-
+{% extends "base.html" %}
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'board/post_detail.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'common/header.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'common/footer.css' %}">
-    <script src="https://kit.fontawesome.com/9b2e3379cb.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
-    <title>Mysite2</title>
+    {% load static %}
+    {% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/board/post_detail.css' %}">
+    {% endblock %}
 </head>
 
-<body>
-<div class="for_footer">
-    {% include 'header.html' %}
+{% block content %}
     <div class="wrap">
         <div class="post">
             <div class="title">
@@ -26,8 +14,8 @@
                     {{ post.subject }}
                 </h3>
                 <div class="post_control">
-                    <a href="{% url 'board:post_modify' post.id%}">수정</a>
-                    <a href="{% url 'board:post_delete' post.id%}">삭제</a>
+                    <a href="#" class="post_modify">수정</a>
+                    <a href="#" class="post_delete">삭제</a>
                 </div>
             </div>
             <p class="contents">
@@ -58,8 +46,24 @@
         </div>
         {% endfor %}
     </div>
-</div>
-    {% include 'footer.html' %}
-</body>
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+    function deletePost(){
+        if(confirm("삭제하시겠습니까?")){
+            window.location.href = "{% url 'board:post_delete' post.id %}";
+        }
+    }
+    function modifyPost(){
+        window.location.href = "{% url 'board:post_modify' post.id %}";
+    }
 
-</html>
+    window.onload = function(){
+        const deleteBtn = document.querySelector('.post_delete');
+        const modifyBtn = document.querySelector('.post_modify');
+
+        deleteBtn.addEventListener('click',deletePost);
+        modifyBtn.addEventListener('click', modifyPost);
+    }
+</script>
+{% endblock %}

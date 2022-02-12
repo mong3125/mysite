@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post, Comment
-from .forms import PostForm
+from .forms import PostForm, CommentForm
 from django.utils import timezone
 from django.core.paginator import Paginator
 from django.http import Http404, HttpResponse
@@ -8,6 +8,9 @@ from django.contrib import messages
 # Create your views here.
 
 def index(request):
+    if request.user.is_anonymous:
+        return render(request, 'common/login.html')
+
     # 게시판 글 목록 출력
     post_list = Post.objects.order_by('-create_date').filter(author=request.user)
     # 입력 인자
@@ -77,14 +80,4 @@ def post_delete(request, post_id):
 
     post.delete()
     return redirect('board:index')
-
-def comment_modify(request, comment_id):
-    comment = get_object_or_404(Comment, pk=comment_id)
-
-    if request.user != comment.author:
-        messages.error(request, '수정권한이 없습니다.')
-        return redirect('board:detail', post_id=comment.post.id)
-
-    if request.method = "POST":
-        form = C
 
