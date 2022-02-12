@@ -28,15 +28,21 @@
     padding: 5px;
     resize: none;
 }
+.postForm {
+    width: 1200px;
+}
 
 .save {
+    display: flex;
+    width: 1200px;
     margin-top: 10px;
 }
+.save button{
+    margin-left: auto;
+    margin-right: 5px;
+}
 .save button {
-    position: relative;
-    left: 1100px;
     cursor: pointer;
-    display: block;
     width: 100px;
     border-radius: 20px;
     border: none;
@@ -45,4 +51,16 @@
     cursor: pointer;
     height: 40px;
     font-size: 20px;
+}
+.save a {
+    display: block;
+    background: #3071F2;
+    color: #fff;
+    height: 40px;
+    font-size: 20px;
+    width: 100px;
+    border-radius: 20px;
+    border: none;
+    text-align: center;
+    line-height: 40px;
 }
