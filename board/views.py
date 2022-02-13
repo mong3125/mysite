@@ -40,7 +40,7 @@ def create_post(request):
 def post_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     if request.user != post.author:
-        return HttpResponse("이건 생각했었다 애송아.")
+        return HttpResponse("로그아웃 되어있습니다.<br>로그인 후 30분간 입력이 없으면 자동로그아웃 됩니다.")
     context = {'post' : post}
     return render(request, 'board/post_detail.html', context)
 
