@@ -22,7 +22,6 @@ class LoginView(DefaultLoginView):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cal/', include('cal.urls')),
     path('board/', include('board.urls')),
     path('common/', include('common.urls')),
     path('', LoginView.as_view(template_name='common/login.html'), name='login'),
