@@ -3,7 +3,7 @@
 <head>
     {% load static %}
     {% block css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/board/create_post.css' %}?">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/board/create_post.css' %}????">
     {% endblock %}
 </head>
 
@@ -13,6 +13,15 @@
             {% csrf_token %}
             <div class="post-title">
                 <input type="text" name="subject" placeholder="제목을 입력하세요">
+                <select name="feelingWeather" id="emotion_weather">
+                        <option value="" selected>기분날씨</option>
+                        <option value="sunny">맑음</option>
+                        <option value="cloudy">구름</option>
+                        <option value="rainy">비</option>
+                        <option value="snow">눈</option>
+                        <option value="storm">폭풍</option>
+                        <option value="destroy">멸망</option>
+                    </select>
             </div>
             <textarea name="content" cols="30" rows="10" placeholder="내용을 입력하세요"></textarea>
             <div class="save">

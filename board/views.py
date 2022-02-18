@@ -31,6 +31,7 @@ def create_post(request):
             post = form.save(commit=False)
             post.create_date = timezone.now()
             post.author = request.user
+            post.feelingWeather = request.POST.get('feelingWeather')
             post.save()
             return redirect('board:index')
     # 게시판 글 작성

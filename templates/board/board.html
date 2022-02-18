@@ -2,7 +2,7 @@
 <head>
     {% load static %}
     {% block css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/board/board.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/board/board.css' %}????">
     {% endblock %}
 </head>
 {% block content %}
@@ -13,9 +13,8 @@
             <tr>
                 <th>번호</th>
                 <th>제목</th>
-                <th>작성자</th>
-                <th>작성일시</th>
-                <th>조회수</th>
+                <th class="text_center">작성일시</th>
+                <th class="text_center">기분날씨</th>
             </tr>
         </thead>
         <tbody>
@@ -25,20 +24,22 @@
                     <tr>
                         <td class="even">{{ post_list.paginator.count|sub:post_list.start_index|sub:forloop.counter0|add:1 }}</td>
                         <td class="title even"><a href="{% url 'board:detail' post.id %}">{{ post.subject }}</a></td>
-                        <td class="even">작성자</td>
-                        <td class="even create_date">{{ post.create_date }}</td>
-                        <td class="even">조회수</td>
+                        <td class="even create_date">{{ post.create_date|date:'Y년 m월 d일 D' }}</td>
+                        <td class="even text_center">{{ post.get_feelingWeather_display }}</td>
                     </tr>
                     {% else %}
                     <tr>
                         <td>{{ post_list.paginator.count|sub:post_list.start_index|sub:forloop.counter0|add:1 }}</td>
                         <td class="title"><a href="{% url 'board:detail' post.id %}">{{ post.subject }}</a></td>
-                        <td>작성자</td>
-                        <td class="create_date">{{ post.create_date }}</td>
-                        <td>조회수</t>
+                        <td class="create_date">{{ post.create_date|date:'Y년 m월 d일 D' }}</td>
+                        <td class="text_center">{{ post.get_feelingWeather_display }}</t>
                     </tr>
                     {% endif %}
                 {% endfor %}
+            {% else %}
+                <tr>
+                    <td class="text_center" colspan="4">글쓰기를 눌러주세요.</td>
+                </tr>
             {% endif %}
         </tbody>
     </table>

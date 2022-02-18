@@ -12,6 +12,9 @@
 .board tbody td {
     padding: 20px;
 }
+.text_center {
+    text-align: center;
+}
 .title  {
     width: 460px;
 }
@@ -24,7 +27,7 @@
 .write {
     margin: auto;
     margin-top: 20px;
-    width: 1280px;
+    width: 1100px;
     text-align: right;
 }
 .write a {
@@ -35,7 +38,7 @@
     color: #fff;
 }
 .pagination {
-    width: 1280px;
+    width: 1100px;
     margin: auto;
     padding-top: 20px;
     border-top: 1px solid #ccc;
