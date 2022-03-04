@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block css %}
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/schedule/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <p><input type="date" name="deadline"></p>
+    <p><textarea name="content" id="todo" cols="100" rows="3"></textarea></p>
+    <p><button type="submit">등록하기</button></p>
+</form>
+{% if todo_list %}
+    {% for todo in todo_list %}
+        <div class="deadline">{{ todo.deadline }}</div>
+        <div class="todo_list">
+            <p class="todo">{{ todo.content }}</p>
+        </div>
+    {% endfor %}
+{% endif %}
+{% endblock %}

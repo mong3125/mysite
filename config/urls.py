@@ -24,5 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('board/', include('board.urls')),
     path('common/', include('common.urls')),
+    path('schedule/', include('schedule.urls')),
     path('', LoginView.as_view(template_name='common/login.html'), name='login'),
 ]

@@ -7,6 +7,7 @@ from django.http import Http404, HttpResponse
 from django.contrib import messages
 # Create your views here.
 
+
 def index(request):
     if request.user.is_anonymous:
         return render(request, 'common/login.html')
@@ -24,6 +25,7 @@ def index(request):
 
     return render(request, 'board/board.html', context)
 
+
 def create_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
@@ -38,6 +40,7 @@ def create_post(request):
     form = PostForm()
     return render(request, 'board/create_post.html', {'form' : form})
 
+
 def post_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     if request.user != post.author:
@@ -45,12 +48,14 @@ def post_detail(request, post_id):
     context = {'post' : post}
     return render(request, 'board/post_detail.html', context)
 
+
 def comment_create(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     comment = Comment(post=post, content=request.POST.get('comment'), create_date=timezone.now())
     comment.author = request.user
     comment.save()
     return redirect('board:detail', post_id=post.id)
+
 
 def post_modify(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
@@ -72,6 +77,7 @@ def post_modify(request, post_id):
     context = {'form': form}
     return render(request, 'board/create_post.html', context)
 
+
 def post_delete(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
 
@@ -81,6 +87,7 @@ def post_delete(request, post_id):
 
     post.delete()
     return redirect('board:index')
+
 
 def comment_delete(request, comment_id):
     comment = Comment.objects.get(id=comment_id)
