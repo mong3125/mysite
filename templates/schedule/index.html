@@ -15,7 +15,7 @@
         <p><textarea name="content" id="todo" cols="100" rows="3"></textarea></p>
         <p><button type="submit">등록하기</button></p>
     </form>
-    {% if todo_list %}
+    {% if todo_list_deadline %}
         {% for deadline in deadline_list %}
             <div class="deadline">{{ deadline|date:'Y년 m월 d일 D' }}</div>
             {% for todo in todo_list_deadline|get_item:deadline %}
