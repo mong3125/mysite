@@ -15,7 +15,7 @@ def index(request):
         return render(request, 'common/login.html')
 
     # 게시판 글 목록 출력
-    post_list = request.user.post_set.order_by('-create_date').filter(author=request.user)
+    post_list = request.user.post_set.order_by('-create_date')
     # 입력 인자
     page = request.GET.get('page', '1')
 
