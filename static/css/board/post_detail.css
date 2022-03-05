@@ -43,6 +43,9 @@ textarea {
     font-size: 20px;
     padding: 5px;
 }
+.comment_create textarea::placeholder{
+    font-size: 20px;
+}
 .comment-btn {
     margin-top: 10px;
     text-align: end;

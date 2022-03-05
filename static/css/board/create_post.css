@@ -23,7 +23,7 @@
 .postForm select {
     margin-top: 20px;
     margin-left: 10px;
-    width: 130px;
+    width: 140px;
     padding-left: 10px;
     height: 50px;
     font-size: 20px;
@@ -41,6 +41,9 @@
     font-size: 20px;
     padding: 5px;
     resize: none;
+}
+.postForm textarea::placeholder {
+    font-size: 20px;
 }
 .postForm {
     width: 1200px;
@@ -68,7 +71,7 @@
 }
 .save a {
     display: block;
-    background: #3071F2;
+    background: #a0a0a0;
     color: #fff;
     height: 40px;
     font-size: 20px;
