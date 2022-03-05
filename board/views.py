@@ -43,10 +43,14 @@ def create_post(request):
 
 def post_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    if request.user != post.author:
-        return HttpResponse("로그아웃 되어있습니다.<br>로그인 후 30분간 입력이 없으면 자동로그아웃 됩니다.")
-    context = {'post' : post}
-    return render(request, 'board/post_detail.html', context)
+
+    if request.user.is_anonymous:
+        return render(request, 'common/login.html')
+    elif request.user != post.author:
+        return HttpResponse("잘못된 접근입니다.")
+    else:
+        context = {'post' : post}
+        return render(request, 'board/post_detail.html', context)
 
 
 def comment_create(request, post_id):
@@ -59,6 +63,9 @@ def comment_create(request, post_id):
 
 def post_modify(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
+
+    if request.user.is_anonymous:
+        return render(request, 'common/login.html')
 
     if request.user != post.author:
         messages.error(request, '수정권한이 없습니다')
