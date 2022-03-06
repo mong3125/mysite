@@ -4,25 +4,45 @@
 <!-- CSS -->
 {% block css %}
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/schedule/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/schedule/index.css' %}?">
+{% endblock %}
+
+<!-- JS -->
+{% block script %}
+    <script type="text/javascript" src="{% static 'js/schedule/index.js' %}"></script>
 {% endblock %}
 
 <!-- CONTENT -->
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
-        <p><input type="date" name="deadline"></p>
-        <p><textarea name="content" id="todo" cols="100" rows="3"></textarea></p>
-        <p><button type="submit">등록하기</button></p>
-    </form>
+    <div class="background">
+        <div class="window">
+            <div class="popup">
+                <p class="todoTitle">일정추가</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <p><input type="date" name="deadline"></p>
+                    <textarea name="content" id="todoText" cols="100" rows="3"></textarea>
+                    <div class="registerOrCancel">
+                        <button type="submit" class="btn">등록하기</button>
+                        <div id="closePopup" class="btn">취소</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="makeTodo">
+        <button id="showPopup">일정추가</button>
+    </div>
     {% if todo_list_deadline %}
         {% for deadline in deadline_list %}
-            <div class="deadline">{{ deadline|date:'Y년 m월 d일 D' }}</div>
-            {% for todo in todo_list_deadline|get_item:deadline %}
-                <div class="todo_list">
-                    <p class="todo">{{ todo.content }}</p>
-                </div>
-            {% endfor %}
+            <div class="todoWrap">
+                <div class="deadline">{{ deadline|date:'Y년 m월 d일 D' }}</div>
+                {% for todo in todo_list_deadline|get_item:deadline %}
+                    <div class="todo_list">
+                        <p class="todo">{{ todo.content }}</p>
+                    </div>
+                {% endfor %}
+            </div>
         {% endfor %}
     {% endif %}
 {% endblock %}
