@@ -80,8 +80,7 @@ textarea {
 }
 
 
-/* 일정 목록 스타일 */
-.makeTodo {
+/* 일정 목록록 스타일 */.makeTodo {
     margin: auto;
     margin-top: 20px;
     width: 1280px;
@@ -98,9 +97,19 @@ textarea {
     font-size: 20px;
 }
 .todoWrap {
+    margin: auto;
+    width: 1280px;
+}
+.todoByDeadline {
     margin-top: 10px;
+
 }
 .deadline {
-    font-size: 30px;
-    border-bottom: 1px solid black;
+    /* display: inline-block; */
+    font-size: 40px;
+    border-bottom: 2px solid black;
+}
+.todo p {
+    font-size: 20px;
+    margin-top: 10px;
 }
