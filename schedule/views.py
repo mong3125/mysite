@@ -3,18 +3,17 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from collections import defaultdict
 from .forms import TodoForm
+from .models import Todo
 
 
-# Create your views here.
-
-
+# 일정페이지
 def index(request):
     # 로그인 안되있다면 로그인 창으로
     if request.user.is_anonymous:
         return render(request, 'common/login.html')
 
     # 일정 출력
-    todo_list = request.user.todo_set.order_by('deadline').all()
+    todo_list = request.user.todo_set.order_by('deadline').filter(is_complete=False)
     todo_list_deadline = defaultdict(list)
     for todo in todo_list:
         todo_list_deadline[todo.deadline].append(todo)
@@ -34,3 +33,18 @@ def index(request):
                                                    'todo_list': todo_list,
                                                    'todo_list_deadline': todo_list_deadline,
                                                    'deadline_list': deadline_list})
+
+
+# 일정 완료버튼
+def todo_complete(request, todo_id):
+    todo = Todo.objects.get(id=todo_id)
+    todo.is_complete = True
+    todo.save()
+    return redirect('schedule:index')
+
+
+# 일정 취소버튼
+def todo_delete(request, todo_id):
+    todo = Todo.objects.get(id=todo_id)
+    todo.delete()
+    return redirect('schedule:index')
