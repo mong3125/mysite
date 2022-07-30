@@ -14,6 +14,7 @@
 
 <!-- CONTENT -->
 {% block content %}
+    <!--일정추가 팝업-->
     <div class="background">
         <div class="window">
             <div class="popup">
@@ -30,9 +31,13 @@
             </div>
         </div>
     </div>
+
+    <!--일정추가-->
     <div class="makeTodo">
         <button id="showPopup">일정추가</button>
     </div>
+
+    <!--일정 목록 출력-->
     <div class="todoWrap">
     {% if todo_list_deadline %}
         {% for deadline in deadline_list %}

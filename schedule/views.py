@@ -27,10 +27,13 @@ def index(request):
             todo.author = request.user
             todo.save()
             return redirect('schedule:index')
+
+    # 완료한 일정
+    complete_todo_list = request.user.todo_set.order_by('deadline').filter(is_complete=True)
+
     form = TodoForm()
 
     return render(request, 'schedule/index.html', {'form': form,
-                                                   'todo_list': todo_list,
                                                    'todo_list_deadline': todo_list_deadline,
                                                    'deadline_list': deadline_list})
 
